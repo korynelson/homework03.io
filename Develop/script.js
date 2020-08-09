@@ -1,9 +1,9 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var upercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var uppercase = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 var lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
 var special = ['!','@','#','$','%','^','&','*','/','~','?'];
-var numeric = [0,1,2,3,4,5,6,7,8,9];
+var numeric = ['0','1','2','3','4','5','6','7','8','9'];
 
 // Write password to the #password input
 function writePassword() {
@@ -29,21 +29,35 @@ function writePassword() {
       }
       while(!Number.isInteger(passnum))
     }
+    //initialize the preference array
+    var pref = [];
 
     do{
       var prefLowercase = confirm("Would you like to have lowercase characters in your password?")
-      var prefUppercase = confirm("Would you like to have uppercase characters in your password?")
-      var prefNumeric = confirm("Would you like to have numeric characters in your password?")
-      var prefSpecial = confirm("Would you like to have special characters in your password?")
 
+      if (prefLowercase){
+        pref = pref.concat(lowercase);
+      }
+      var prefUppercase = confirm("Would you like to have uppercase characters in your password?")
+      if (prefUppercase){
+        pref = pref.concat(uppercase);
+      }
+      var prefNumeric = confirm("Would you like to have numeric characters in your password?")
+      if (prefNumeric){
+        pref = pref.concat(numeric);
+      }
+      var prefSpecial = confirm("Would you like to have special characters in your password?")
+      if (prefSpecial){
+        pref = pref.concat(special);
+      }
       if(!prefNumeric && !prefSpecial && !prefUppercase && !prefLowercase){
         alert("You need some characters ya dummy")
       }
+      console.log(pref)
     }
     while(!prefNumeric && !prefSpecial && !prefUppercase && !prefLowercase)
 
-    //determine which prefernces were picked and put them in an array
-    var pref = [];
+console.log(pref)
 
     //password generation
     var password = generatePassword(lowercase, uppercase, numeric, special, pref, passnum);
