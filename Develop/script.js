@@ -56,30 +56,25 @@ function writePassword() {
     }
     while(!prefNumeric && !prefSpecial && !prefUppercase && !prefLowercase)
 
-console.log(pref.length)
-
     //password generation
     var password = generatePassword(pref, passnum);
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
 
-    function generatePassword(a, b){
-      //loop through the whole password array
-      console.log(b)
+      function generatePassword(a, b){
+        //loop through the whole password array
+        var output = [];
 
-        for (var i = 0; i < b; i++){
-          console.log(b)
-        }
-      var output = []
-      //for each position we need to randomly pick a character type and randomly pick a character
-      Math.floor((Math.random() * b) + 1);
-     
-      //return password
-      return output;
+          for (var i = 0; i < b; i++){
+            //for each position we need to randomly pick a character type and randomly pick a character
+            var rand = Math.floor((Math.random() * a.length) + 1);
+            output[i] = a[rand];
+          }
+          
+        //return password
+        return output.join('');
     }
     
-
-
   }
 
   //if they don't want to make a password then exit
