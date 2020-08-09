@@ -27,6 +27,7 @@ function writePassword() {
         alert("Great, let's make a password " +passnum + " characters long")
         }
         else if(!passnum){
+          alert("I guess you want to exit :( have a nice day")
           break choices;
         }
       }
