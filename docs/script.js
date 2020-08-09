@@ -97,6 +97,7 @@ function writePassword() {
     alert("FINE :( have a nice day!")
     break choices;
   }
+  alert("Your custom password is ready!!");
 }
 
 // Add event listener to generate button
