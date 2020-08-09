@@ -5,17 +5,20 @@ var lowercase = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p'
 var special = ['!','@','#','$','%','^','&','*','/','~','?'];
 var numeric = ['0','1','2','3','4','5','6','7','8','9'];
 
-// Write password to the #password input
+// Define password function
 function writePassword() {
 
-  //initialize the password questions
+  //Initialize questions to the user
   var enter = confirm("Would you like to make a password?")
-  
-  //if they want to make a password start confirming their preferences
-  choices: if(enter){
+
+  //If positive start the logic of choosing paramaters for password
+  //name the if statement so we can break later
+  choices: 
+  if(enter){
     alert("Your password must contain at least 8 characters and no more than 128 characters")
     var passnum = Number(prompt("How many characters would you like your password to have? "));
 
+    //checking for valid length inputs
     if (passnum != null && Number.isInteger(passnum)&& passnum >=8 && passnum<=128){
       alert("Great, let's make a password " + passnum + " characters long")
     }
@@ -33,14 +36,17 @@ function writePassword() {
       }
       while(!Number.isInteger(passnum))
     }
+    //exit if they cancel before putting in a valid length
     else if(!passnum){
       alert("You didnt choose a password length :( have a nice day!");
       break choices;
     }
-    //initialize the preference array
-    var pref = [];
-   
 
+    //initialize the user preference array
+    var pref = [];
+    
+    //gather user preferences for password characters
+    //loop until they choose at least 1 type of character
     do{
       var prefLowercase = confirm("Would you like to have lowercase characters in your password?")
 
@@ -60,28 +66,29 @@ function writePassword() {
         pref = pref.concat(special);
       }
       if(!prefNumeric && !prefSpecial && !prefUppercase && !prefLowercase){
-        alert("You need some characters ya dummy")
+        alert("Oh No, something went wrong!!  You have to pick at least one type of character")
       }
     }
     while(!prefNumeric && !prefSpecial && !prefUppercase && !prefLowercase)
 
-    //password generation
+    //initialize generation and password vars
     var password = generatePassword(pref, passnum);
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
 
-      function generatePassword(a, b){
-        //loop through the whole password array
-        var output = [];
+    //define password generation
+    function generatePassword(a, b){
+      var output = [];
 
-          for (var i = 0; i < b; i++){
-            //for each position we need to randomly pick a character type and randomly pick a character
-            var rand = Math.floor((Math.random() * a.length) + 1);
-            output[i] = a[rand];
-          }
+        //loop through the whole password array
+        for (var i = 0; i < b; i++){
+          //for each position we need to randomly pick a character type and randomly pick a character
+          var rand = Math.floor((Math.random() * a.length) + 1);
+          output[i] = a[rand];
+        }
           
-        //return password
-        return output.join('');
+      //return password as joined string
+      return output.join('');
     }
   }
 
