@@ -12,12 +12,12 @@ function writePassword() {
   var enter = confirm("Would you like to make a password?")
   
   //if they want to make a password start confirming their preferences
-  if(enter){
+  choices: if(enter){
     alert("Your password must contain at least 8 characters and no more than 128 characters")
     var passnum = Number(prompt("How many characters would you like your password to have? "));
 
     if (passnum != null && Number.isInteger(passnum)&& passnum >=8 && passnum<=128){
-      alert("Great, let's make a password " +passnum + " characters long")
+      alert("Great, let's make a password " + passnum + " characters long")
     }
     else if(passnum != null && !Number.isInteger(passnum)){
       do{
@@ -26,11 +26,19 @@ function writePassword() {
         if (passnum != null && Number.isInteger(passnum)&& passnum >=8 && passnum<=128){
         alert("Great, let's make a password " +passnum + " characters long")
         }
+        else if(!passnum){
+          break choices;
+        }
       }
       while(!Number.isInteger(passnum))
     }
+    else if(!passnum){
+      alert("You didnt choose a password length :( have a nice day!");
+      break choices;
+    }
     //initialize the preference array
     var pref = [];
+   
 
     do{
       var prefLowercase = confirm("Would you like to have lowercase characters in your password?")
@@ -74,12 +82,12 @@ function writePassword() {
         //return password
         return output.join('');
     }
-    
   }
 
   //if they don't want to make a password then exit
   else{
     alert("FINE :( have a nice day!")
+    break choices;
   }
 }
 
