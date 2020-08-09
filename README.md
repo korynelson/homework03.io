@@ -1,2 +1,2 @@
-# hoomework03.io
+# homework03.io
 Homework #3 for class
