@@ -2,6 +2,9 @@
 
 Create an application that generates a random password based on user-selected criteria. This app runs in the browser and features dynamically updated HTML and CSS. It also a responsive user interface, ensuring that it adapts to multiple screen sizes.
 
+LINK:
+https://korynelson.github.io/passwordGenerator/
+
 ![Image of Launched Website](/assets/images/websitePhoto1.PNG)
 
 
